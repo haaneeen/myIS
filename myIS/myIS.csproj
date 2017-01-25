@@ -9,9 +9,25 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>myIS</RootNamespace>
     <AssemblyName>myIS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,9 +48,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>myIS.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,116 +66,165 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDomain.cs">
+    <Compile Include="Controler\controler.cs" />
+    <Compile Include="Model\model.cs" />
+    <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDomain.Designer.cs">
+    <Compile Include="SearchForm.Designer.cs" />
+    <Compile Include="View\AddDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddDomain.Designer.cs">
       <DependentUpon>AddDomain.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPartner.cs">
+    <Compile Include="View\AddPartner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPartner.Designer.cs">
+    <Compile Include="View\AddPartner.Designer.cs">
       <DependentUpon>AddPartner.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdoHelper.cs" />
-    <Compile Include="ConnectUser.cs">
+    <Compile Include="View\DomainsUserList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectUser.Designer.cs">
+    <Compile Include="View\DomainsUserList.Designer.cs">
+      <DependentUpon>DomainsUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EdittingProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EdittingProfile.Designer.cs">
+      <DependentUpon>EdittingProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PartnersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PartnersList.Designer.cs">
+      <DependentUpon>PartnersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pics\AdoHelper.cs" />
+    <Compile Include="View\ConnectUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConnectUser.Designer.cs">
       <DependentUpon>ConnectUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domains.cs">
+    <Compile Include="View\DeleteExistDomain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Domains.Designer.cs">
+    <Compile Include="View\DeleteExistDomain.Designer.cs">
+      <DependentUpon>DeleteExistDomain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Domains.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Domains.Designer.cs">
       <DependentUpon>Domains.cs</DependentUpon>
     </Compile>
-    <Compile Include="FirstForm.cs">
+    <Compile Include="View\FirstForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FirstForm.Designer.cs">
+    <Compile Include="View\FirstForm.Designer.cs">
       <DependentUpon>FirstForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputsForm.cs">
+    <Compile Include="View\InputsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputsForm.Designer.cs">
+    <Compile Include="View\InputsForm.Designer.cs">
       <DependentUpon>InputsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartnerClass.cs">
+    <Compile Include="View\PartnerClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartnerClass.Designer.cs">
+    <Compile Include="View\PartnerClass.Designer.cs">
       <DependentUpon>PartnerClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Record.cs">
+    <Compile Include="View\Record.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Record.Designer.cs">
+    <Compile Include="View\Record.Designer.cs">
       <DependentUpon>Record.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchForm.cs">
+    <Compile Include="View\MySearchList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchForm.Designer.cs">
-      <DependentUpon>SearchForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MySearchList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MySearchList.Designer.cs">
+    <Compile Include="View\MySearchList.Designer.cs">
       <DependentUpon>MySearchList.cs</DependentUpon>
     </Compile>
-    <Compile Include="SuccessfulDomainAdded.cs">
+    <Compile Include="View\SearchGenere.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SuccessfulDomainAdded.Designer.cs">
+    <Compile Include="View\SearchGenere.Designer.cs">
+      <DependentUpon>SearchGenere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SuccessfulDomainAdded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SuccessfulDomainAdded.Designer.cs">
       <DependentUpon>SuccessfulDomainAdded.cs</DependentUpon>
     </Compile>
-    <Compile Include="SuccessSearch.cs">
+    <Compile Include="View\SuccessSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SuccessSearch.Designer.cs">
+    <Compile Include="View\SuccessSearch.Designer.cs">
       <DependentUpon>SuccessSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Success_insert.cs">
+    <Compile Include="View\Success_insert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Success_insert.Designer.cs">
+    <Compile Include="View\Success_insert.Designer.cs">
       <DependentUpon>Success_insert.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddDomain.resx">
+    <Compile Include="View\UpdateDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateDomain.Designer.cs">
+      <DependentUpon>UpdateDomain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SearchForm.resx" />
+    <EmbeddedResource Include="View\AddDomain.resx">
       <DependentUpon>AddDomain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPartner.resx">
+    <EmbeddedResource Include="View\AddPartner.resx">
       <DependentUpon>AddPartner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConnectUser.resx">
+    <EmbeddedResource Include="View\ConnectUser.resx">
       <DependentUpon>ConnectUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Domains.resx">
+    <EmbeddedResource Include="View\DeleteExistDomain.resx">
+      <DependentUpon>DeleteExistDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Domains.resx">
       <DependentUpon>Domains.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FirstForm.resx">
+    <EmbeddedResource Include="View\DomainsUserList.resx">
+      <DependentUpon>DomainsUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EdittingProfile.resx">
+      <DependentUpon>EdittingProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FirstForm.resx">
       <DependentUpon>FirstForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputsForm.resx">
+    <EmbeddedResource Include="View\InputsForm.resx">
       <DependentUpon>InputsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartnerClass.resx">
+    <EmbeddedResource Include="View\PartnerClass.resx">
       <DependentUpon>PartnerClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PartnersList.resx">
+      <DependentUpon>PartnersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -167,23 +236,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Record.resx">
+    <EmbeddedResource Include="View\Record.resx">
       <DependentUpon>Record.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchForm.resx">
-      <DependentUpon>SearchForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MySearchList.resx">
+    <EmbeddedResource Include="View\MySearchList.resx">
       <DependentUpon>MySearchList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SuccessfulDomainAdded.resx">
+    <EmbeddedResource Include="View\SearchGenere.resx">
+      <DependentUpon>SearchGenere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SuccessfulDomainAdded.resx">
       <DependentUpon>SuccessfulDomainAdded.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SuccessSearch.resx">
+    <EmbeddedResource Include="View\SuccessSearch.resx">
       <DependentUpon>SuccessSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Success_insert.resx">
+    <EmbeddedResource Include="View\Success_insert.resx">
       <DependentUpon>Success_insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UpdateDomain.resx">
+      <DependentUpon>UpdateDomain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +280,25 @@
     <Content Include="partners.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="pics\delete-ruthlessly.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
